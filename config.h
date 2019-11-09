@@ -4,6 +4,10 @@
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
+static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
+static const unsigned int systrayspacing = 2;   /* systray spacing */
+static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
+static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "SauceCodePro Nerd Font:size=11" };
@@ -18,8 +22,6 @@ static const char col_black[]       = "#000000";
 static const char col_red[]         = "#ff0000";
 static const char col_yellow[]      = "#ffff00";
 static const char col_white[]       = "#ffffff";
-static const unsigned int baralpha = 0xcc;
-static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][5]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = 	{ col_gray3, col_gray1, col_gray2 },
@@ -27,16 +29,9 @@ static const char *colors[][5]      = {
 	[SchemeWarn] = 	{ col_cyan2, col_gray1, col_gray2 },
 	[SchemeUrgent]=	{ col_white, col_red,    col_red },
 };
-static const unsigned int alphas[][5]      = {
-	/*               fg      bg        border     */
-	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
-	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
-	[SchemeWarn]  = { OPAQUE, baralpha, borderalpha },
-	[SchemeUrgent]  = { OPAQUE, baralpha, borderalpha },
-};
 
 /* tagging */
-static const char *tags[] = { "", "", "", "4", "5", "6", "7", "", "" };
+static const char *tags[] = { "", "", "", "4", "5", "6", "ﭮ", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -46,8 +41,10 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
-	{ "qutebrowser",  NULL,       NULL,       1 << 1,       0,           -1 },
-	{ "st -e neomutt",       NULL,       NULL,       1 << 2,       0,           -1 },
+	{ "qutebrowser",  NULL,       NULL,   1 << 1,       0,           -1 },
+	{ "St",		"st",	 "neomutt",   1 << 2,	    0,		 -1 },
+	{ "discord", "discord",  "Discord Updater",  1 << 6,    0,	 -1 },
+	{ "discord", "discord",	 NULL,  1 << 6,    0,	 -1 },
 };
 
 /* layout(s) */
@@ -81,11 +78,13 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *qutebrowsercmd[]  = { "qutebrowser", NULL };
 static const char *filemanagercmd[]  = { "st", "-e", "ranger", NULL };
 static const char *neomuttcmd[]  = { "st", "-e", "neomutt", NULL };
+static const char *lockcmd[]  = { "i3lock-fancy", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ Mod4Mask,              	XK_0,	   spawn,          {.v = lockcmd } },
 	{ Mod4Mask,              	XK_1,	   spawn,          {.v = qutebrowsercmd } },
 	{ Mod4Mask,              	XK_2,	   spawn,          {.v = filemanagercmd } },
 	{ Mod4Mask,              	XK_3,	   spawn,          {.v = neomuttcmd } },
