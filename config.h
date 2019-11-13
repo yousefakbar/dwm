@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
@@ -16,7 +16,7 @@ static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#445035";
+static const char col_cyan[]        = "#282A36";
 static const char col_cyan2[]       = "#82983B";
 static const char col_black[]       = "#000000";
 static const char col_red[]         = "#ff0000";
@@ -43,7 +43,6 @@ static const Rule rules[] = {
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 	{ "qutebrowser",  NULL,       NULL,   1 << 1,       0,           -1 },
 	{ "St",		"st",	 "neomutt",   1 << 2,	    0,		 -1 },
-	{ "discord", "discord",  "Discord Updater",  1 << 6,    0,	 -1 },
 	{ "discord", "discord",	 NULL,  1 << 6,    0,	 -1 },
 };
 
@@ -78,14 +77,16 @@ static const char *cmd_term[]  = { "st", NULL };
 static const char *cmd_browser[]  = { "qutebrowser", NULL };
 static const char *cmd_fileman[]  = { "st", "-e", "ranger", NULL };
 static const char *cmd_mutt[]  = { "st", "-e", "neomutt", NULL };
-static const char *cmd_lock[]  = { "i3lock-fancy", NULL };
+static const char *cmd_lock[]  = { "i3lock-fancy", "-t", "", NULL };
 static const char *cmd_passmenu[] = { "passmenu", NULL };
 static const char *cmd_manmenu[] = { "manmenu", NULL };
+static const char *cmd_wikimenu[] = { "archhelp", NULL };
 static const char *cmd_shutdown[] = { "shutdown.sh", NULL };
+static const char *cmd_usbmenu[] = { "usbmenu", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ Mod4Mask,                     XK_d,      spawn,          {.v = dmenucmd } },
+	{ Mod4Mask,                     XK_space,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = cmd_term } },
 	{ Mod4Mask,              	XK_l,	   spawn,          {.v = cmd_lock } },
 	{ Mod4Mask,              	XK_1,	   spawn,          {.v = cmd_browser } },
@@ -93,6 +94,8 @@ static Key keys[] = {
 	{ Mod4Mask,              	XK_3,	   spawn,          {.v = cmd_mutt } },
 	{ Mod4Mask,			XK_p,	   spawn,	   {.v = cmd_passmenu} },
 	{ Mod4Mask,			XK_m,	   spawn,	   {.v = cmd_manmenu} },
+	{ Mod4Mask,			XK_h,	   spawn,	   {.v = cmd_wikimenu} },
+	{ Mod4Mask,			XK_u,	   spawn,	   {.v = cmd_usbmenu} },
 	{ Mod4Mask,			XK_x,	   spawn,	   {.v = cmd_shutdown} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
