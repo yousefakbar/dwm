@@ -85,6 +85,8 @@ static const char *cmd_manmenu[] = { "manmenu", NULL };
 static const char *cmd_wikimenu[] = { "archhelp", NULL };
 static const char *cmd_shutdown[] = { "shutdown.sh", NULL };
 static const char *cmd_usbmenu[] = { "usbmenu", NULL };
+static const char *cmd_notesmenu[] = {"notesmenu", NULL };
+
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -96,6 +98,7 @@ static Key keys[] = {
 	{ Mod4Mask,              	XK_3,	   spawn,          {.v = cmd_mutt } },
 	{ Mod4Mask,			XK_p,	   spawn,	   {.v = cmd_passmenu} },
 	{ Mod4Mask,			XK_m,	   spawn,	   {.v = cmd_manmenu} },
+	{ Mod4Mask,			XK_n,	   spawn,	   {.v = cmd_notesmenu} },
 	{ Mod4Mask,			XK_h,	   spawn,	   {.v = cmd_wikimenu} },
 	{ Mod4Mask,			XK_u,	   spawn,	   {.v = cmd_usbmenu} },
 	{ Mod4Mask,			XK_x,	   spawn,	   {.v = cmd_shutdown} },
@@ -125,6 +128,14 @@ static Key keys[] = {
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
 	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
+	{ MODKEY|ControlMask,           XK_j,	   resizeheight,   {.i = +8  } },
+	{ MODKEY|ControlMask,           XK_k,	   resizeheight,   {.i = -8  } },
+	{ MODKEY|ControlMask,           XK_h,	   resizewidth,    {.i = -8  } },
+	{ MODKEY|ControlMask,           XK_l,	   resizewidth,    {.i = +8  } },
+	{ MODKEY|ControlMask|ShiftMask, XK_j,	   resizey,	   {.i = +8  } },
+	{ MODKEY|ControlMask|ShiftMask, XK_k,	   resizey,	   {.i = -8  } },
+	{ MODKEY|ControlMask|ShiftMask, XK_h,	   resizex,        {.i = -8  } },
+	{ MODKEY|ControlMask|ShiftMask, XK_l,	   resizex,        {.i = +8  } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)

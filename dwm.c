@@ -219,6 +219,10 @@ static Monitor *recttomon(int x, int y, int w, int h);
 static void removesystrayicon(Client *i);
 static void resize(Client *c, int x, int y, int w, int h, int interact);
 static void resizebarwin(Monitor *m);
+static void resizeheight(const Arg *arg);
+static void resizewidth(const Arg *arg);
+static void resizex(const Arg *arg);
+static void resizey(const Arg *arg);
 static void resizeclient(Client *c, int x, int y, int w, int h);
 static void resizemouse(const Arg *arg);
 static void resizerequest(XEvent *e);
@@ -1453,6 +1457,78 @@ resizebarwin(Monitor *m) {
 	if (showsystray && m == systraytomon(m))
 		w -= getsystraywidth();
 	XMoveResizeWindow(dpy, m->barwin, m->wx, m->by, w, bh);
+}
+
+void
+resizeheight(const Arg *arg)
+{
+	int x, y, w;
+	int nh;
+	Client *c;
+
+	if (!(c = selmon->sel))
+		return;
+	c->isfloating = 1;
+	restack(selmon);
+	x = c->x;
+	y = c->y;
+	w = c->w;
+	nh = c->h + arg->i;
+	resizeclient(c, x, y, w, nh);
+}
+
+void
+resizewidth(const Arg *arg)
+{
+	int x, y, h;
+	int nw;
+	Client *c;
+
+	if (!(c = selmon->sel))
+		return;
+	c->isfloating = 1;
+	restack(selmon);
+	x = c->x;
+	y = c->y;
+	h = c->h;
+	nw = c->w + arg->i;
+	resizeclient(c, x, y, nw, h);
+}
+
+void
+resizex(const Arg *arg)
+{
+	int y, w, h;
+	int nx;
+	Client *c;
+
+	if (!(c = selmon->sel))
+		return;
+	c->isfloating = 1;
+	restack(selmon);
+	y = c->y;
+	w = c->w;
+	h = c->h;
+	nx = c->x + arg->i;
+	resizeclient(c, nx, y, w, h);
+}
+
+void
+resizey(const Arg *arg)
+{
+	int x, w, h;
+	int ny;
+	Client *c;
+
+	if (!(c = selmon->sel))
+		return;
+	c->isfloating = 1;
+	restack(selmon);
+	x = c->x;
+	w = c->w;
+	h = c->h;
+	ny = c->y + arg->i;
+	resizeclient(c, x, ny, w, h);
 }
 
 void
