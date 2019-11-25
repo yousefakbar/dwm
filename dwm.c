@@ -1475,6 +1475,7 @@ resizeheight(const Arg *arg)
 	w = c->w;
 	nh = c->h + arg->i;
 	resizeclient(c, x, y, w, nh);
+	arrange(c->mon);
 }
 
 void

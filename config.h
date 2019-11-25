@@ -128,14 +128,14 @@ static Key keys[] = {
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
 	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
-	{ MODKEY|ControlMask,           XK_j,	   resizeheight,   {.i = +8  } },
-	{ MODKEY|ControlMask,           XK_k,	   resizeheight,   {.i = -8  } },
-	{ MODKEY|ControlMask,           XK_h,	   resizewidth,    {.i = -8  } },
-	{ MODKEY|ControlMask,           XK_l,	   resizewidth,    {.i = +8  } },
-	{ MODKEY|ControlMask|ShiftMask, XK_j,	   resizey,	   {.i = +8  } },
-	{ MODKEY|ControlMask|ShiftMask, XK_k,	   resizey,	   {.i = -8  } },
-	{ MODKEY|ControlMask|ShiftMask, XK_h,	   resizex,        {.i = -8  } },
-	{ MODKEY|ControlMask|ShiftMask, XK_l,	   resizex,        {.i = +8  } },
+	{ MODKEY|ControlMask,           XK_j,	   resizeheight,   {.i = +16  } },
+	{ MODKEY|ControlMask,           XK_k,	   resizeheight,   {.i = -16  } },
+	{ MODKEY|ControlMask,           XK_h,	   resizewidth,    {.i = -16  } },
+	{ MODKEY|ControlMask,           XK_l,	   resizewidth,    {.i = +16  } },
+	{ MODKEY|ControlMask|ShiftMask, XK_j,	   resizey,	   {.i = +16  } },
+	{ MODKEY|ControlMask|ShiftMask, XK_k,	   resizey,	   {.i = -16  } },
+	{ MODKEY|ControlMask|ShiftMask, XK_h,	   resizex,        {.i = -16  } },
+	{ MODKEY|ControlMask|ShiftMask, XK_l,	   resizex,        {.i = +16  } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
