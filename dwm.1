@@ -1,6 +1,6 @@
 .TH DWM 1 dwm\-VERSION
 .SH NAME
-dwm \- dynamic window manager
+dwm \- yousef's dynamic window manager
 .SH SYNOPSIS
 .B dwm
 .RB [ \-v ]
@@ -59,11 +59,6 @@ click on a tag label adds/removes that tag to/from the focused window.
 .B Mod1\-Shift\-Return
 Start
 .BR st(1).
-.TP
-.B Mod1\-p
-Spawn
-.BR dmenu(1)
-for launching other programs.
 .TP
 .B Mod1\-,
 Focus previous screen, if any.
@@ -140,8 +135,29 @@ View all windows with any tag.
 .B Mod1\-Control\-[1..n]
 Add/remove all windows with nth tag to/from the view.
 .TP
+.B Mod1\-\-
+Decrease size of gaps, both inner and outer
+.TP
+.B Mod1\-=
+Increase size of gaps, both inner and outer
+.TP
+.B Mod1\-Shift\-=
+Reset gap size, both inner and outer, back to 0px
+.TP
 .B Mod1\-Shift\-q
 Quit dwm.
+.TP
+.B Mod4\-space
+Spawn
+.BR dmenu(1)
+for launching other programs.
+.TP
+.B Mod4\-[1..n]
+Spawn respective program shortcut as defined in config.h
+.TP
+.B Mod4\-Shift\-l
+Lock screen using
+.BR i3lock_fancy(1).
 .SS Mouse commands
 .TP
 .B Mod1\-Button1
