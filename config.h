@@ -31,7 +31,7 @@ static const char *colors[][5]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "4", "5", "6", "ﭮ", "", "" };
+static const char *tags[] = { "", "", "", "4", "5", "6", "ﭮ", "", "9" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -44,6 +44,7 @@ static const Rule rules[] = {
 	{ "qutebrowser",  NULL,       NULL,   1 << 1,       0,           -1 },
 	{ "St",		"st",	 "neomutt",   1 << 2,	    0,		 -1 },
 	{ "discord", "discord",	 NULL,  1 << 6,    0,	 -1 },
+	{ "Spotify",     NULL,       NULL,        1 << 7,         0,     -1 },
 };
 
 /* layout(s) */
