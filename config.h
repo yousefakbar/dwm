@@ -1,7 +1,11 @@
-/* See LICENSE file for copyright and license details. */
+/* TODO: 
+ * 	- migrate bindings from xbindkeys to here
+ * 	- things like volume control 				    
+ * 	- check kai hendry's config for more details (https://github.com/kaihendry/dotfiles/blob/master/suckless/dwm/config.h)
+ */
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
@@ -50,7 +54,7 @@ static const Rule rules[] = {
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -91,7 +95,7 @@ static const char *cmd_notesmenu[] = {"notesmenu", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ Mod4Mask,                     XK_space,      spawn,          {.v = dmenucmd } },
+	{ Mod4Mask,                     XK_space,  spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = cmd_term } },
 	{ Mod4Mask,              	XK_l,	   spawn,          {.v = cmd_lock } },
 	{ Mod4Mask,              	XK_1,	   spawn,          {.v = cmd_browser } },
