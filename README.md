@@ -40,9 +40,19 @@ like this in your .xinitrc:
     	sleep 1
     done &
     exec dwm
+    
+Alternatively, you can use my solution: [dbar](https://github.com/yousefakbar/dbar)
 
 
 Configuration
 -------------
 The configuration of dwm is done by creating a custom config.h
 and (re)compiling the source code.
+
+
+Patching
+--------
+Patches from suckless' [patches page](https://dwm.suckless.org/patches)
+can be found in the `diff` directory.
+You can use the diff information inside to manually/automatically 
+reverse a patch if you don't need it.
