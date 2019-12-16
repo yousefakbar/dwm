@@ -88,8 +88,8 @@ static const char *cmd_wikimenu[] = { "archhelp", NULL };
 static const char *cmd_shutdown[] = { "shutdown.sh", NULL };
 static const char *cmd_usbmenu[] = { "usbmenu", NULL };
 static const char *cmd_notesmenu[] = {"notesmenu", NULL };
-static const char *cmd_soundup[]  = { "amixer", "-q", "sset", "Master", "5%+", NULL };
-static const char *cmd_sounddown[]  = { "amixer", "-q", "sset", "Master", "5%-", NULL };
+static const char *cmd_soundup[]  = { "/bin/sh", "/home/yousef/Documents/scripts/soundup", NULL };
+static const char *cmd_sounddown[]  = { "/bin/sh", "/home/yousef/Documents/scripts/sounddown", NULL };
 static const char *cmd_soundtoggle[]  = { "amixer", "-q", "sset", "Master", "toggle", NULL };
 
 static Key keys[] = {
