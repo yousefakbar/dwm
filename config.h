@@ -1,7 +1,5 @@
-/* See LICENSE file for copyright and license details. */
-
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
@@ -50,7 +48,7 @@ static const Rule rules[] = {
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -62,6 +60,9 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
+#define XF86AudioMute			0x1008ff12
+#define XF86AudioLowerVolume		0x1008ff11
+#define XF86AudioRaiseVolume		0x1008ff13
 #define MODKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
@@ -87,11 +88,13 @@ static const char *cmd_wikimenu[] = { "archhelp", NULL };
 static const char *cmd_shutdown[] = { "shutdown.sh", NULL };
 static const char *cmd_usbmenu[] = { "usbmenu", NULL };
 static const char *cmd_notesmenu[] = {"notesmenu", NULL };
-
+static const char *cmd_soundup[]  = { "/bin/sh", "/home/yousef/Documents/scripts/soundup", NULL };
+static const char *cmd_sounddown[]  = { "/bin/sh", "/home/yousef/Documents/scripts/sounddown", NULL };
+static const char *cmd_soundtoggle[]  = { "amixer", "-q", "sset", "Master", "toggle", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ Mod4Mask,                     XK_space,      spawn,          {.v = dmenucmd } },
+	{ Mod4Mask,                     XK_space,  spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = cmd_term } },
 	{ Mod4Mask,              	XK_l,	   spawn,          {.v = cmd_lock } },
 	{ Mod4Mask,              	XK_1,	   spawn,          {.v = cmd_browser } },
@@ -103,6 +106,9 @@ static Key keys[] = {
 	{ Mod4Mask,			XK_h,	   spawn,	   {.v = cmd_wikimenu} },
 	{ Mod4Mask,			XK_u,	   spawn,	   {.v = cmd_usbmenu} },
 	{ Mod4Mask,			XK_x,	   spawn,	   {.v = cmd_shutdown} },
+	{ 0,		XF86AudioMute,	  	   spawn,	   {.v = cmd_soundtoggle} },
+	{ 0,            XF86AudioRaiseVolume,      spawn,          {.v = cmd_soundup } },
+	{ 0,            XF86AudioLowerVolume,      spawn,          {.v = cmd_sounddown } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
