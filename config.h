@@ -1,9 +1,3 @@
-/* TODO: 
- * 	- migrate bindings from xbindkeys to here
- * 	- things like volume control 				    
- * 	- check kai hendry's config for more details (https://github.com/kaihendry/dotfiles/blob/master/suckless/dwm/config.h)
- */
-
 /* appearance */
 static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int gappx     = 5;        /* gaps between windows */
@@ -66,6 +60,9 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
+#define XF86AudioMute			0x1008ff12
+#define XF86AudioLowerVolume		0x1008ff11
+#define XF86AudioRaiseVolume		0x1008ff13
 #define MODKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
@@ -91,7 +88,9 @@ static const char *cmd_wikimenu[] = { "archhelp", NULL };
 static const char *cmd_shutdown[] = { "shutdown.sh", NULL };
 static const char *cmd_usbmenu[] = { "usbmenu", NULL };
 static const char *cmd_notesmenu[] = {"notesmenu", NULL };
-
+static const char *cmd_soundup[]  = { "amixer", "-q", "sset", "Master", "5%+", NULL };
+static const char *cmd_sounddown[]  = { "amixer", "-q", "sset", "Master", "5%-", NULL };
+static const char *cmd_soundtoggle[]  = { "amixer", "-q", "sset", "Master", "toggle", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -107,6 +106,9 @@ static Key keys[] = {
 	{ Mod4Mask,			XK_h,	   spawn,	   {.v = cmd_wikimenu} },
 	{ Mod4Mask,			XK_u,	   spawn,	   {.v = cmd_usbmenu} },
 	{ Mod4Mask,			XK_x,	   spawn,	   {.v = cmd_shutdown} },
+	{ 0,		XF86AudioMute,	  	   spawn,	   {.v = cmd_soundtoggle} },
+	{ 0,            XF86AudioRaiseVolume,      spawn,          {.v = cmd_soundup } },
+	{ 0,            XF86AudioLowerVolume,      spawn,          {.v = cmd_sounddown } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
