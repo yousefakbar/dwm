@@ -41,6 +41,8 @@ like this in your .xinitrc:
     done &
     exec dwm
 
+Or, just use [dbar](https://github.com/yousefakbar/dbar)
+
 
 Configuration
 -------------
