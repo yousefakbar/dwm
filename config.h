@@ -1,3 +1,7 @@
+/* TODO:
+ * 	- music control keys, similar to volume control
+ */
+
 /* appearance */
 static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int gappx     = 5;        /* gaps between windows */
@@ -88,8 +92,8 @@ static const char *cmd_wikimenu[] = { "archhelp", NULL };
 static const char *cmd_shutdown[] = { "shutdown.sh", NULL };
 static const char *cmd_usbmenu[] = { "usbmenu", NULL };
 static const char *cmd_notesmenu[] = {"notesmenu", NULL };
-static const char *cmd_soundup[]  = { "/bin/sh", "/home/yousef/Documents/scripts/soundup", NULL };
-static const char *cmd_sounddown[]  = { "/bin/sh", "/home/yousef/Documents/scripts/sounddown", NULL };
+static const char *cmd_soundup[]  = { "soundup", NULL };
+static const char *cmd_sounddown[]  = { "sounddown", NULL };
 static const char *cmd_soundtoggle[]  = { "amixer", "-q", "sset", "Master", "toggle", NULL };
 
 static Key keys[] = {
