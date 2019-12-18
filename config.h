@@ -95,6 +95,7 @@ static const char *cmd_notesmenu[] = {"notesmenu", NULL };
 static const char *cmd_soundup[]  = { "soundup", NULL };
 static const char *cmd_sounddown[]  = { "sounddown", NULL };
 static const char *cmd_soundtoggle[]  = { "amixer", "-q", "sset", "Master", "toggle", NULL };
+static const char *cmd_dbar[] = { "donotdisturb", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -167,6 +168,7 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = cmd_term } },
+	{ ClkStatusText,        MODKEY,         Button2,        spawn,          {.v = cmd_dbar } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
