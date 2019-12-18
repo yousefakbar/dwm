@@ -1482,6 +1482,7 @@ resizewidth(const Arg *arg)
 	h = c->h;
 	nw = c->w + arg->i;
 	resizeclient(c, x, y, nw, h);
+	arrange(c->mon);
 }
 
 void
@@ -1500,6 +1501,7 @@ resizex(const Arg *arg)
 	h = c->h;
 	nx = c->x + arg->i;
 	resizeclient(c, nx, y, w, h);
+	arrange(c->mon);
 }
 
 void
@@ -1518,6 +1520,7 @@ resizey(const Arg *arg)
 	h = c->h;
 	ny = c->y + arg->i;
 	resizeclient(c, x, ny, w, h);
+	arrange(c->mon);
 }
 
 void
