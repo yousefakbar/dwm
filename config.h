@@ -65,6 +65,7 @@ static const Layout layouts[] = {
 
 /* key definitions */
 #define XF86AudioMute			0x1008ff12
+#define XF86AudioMicMute		0x1008ffb2
 #define XF86AudioLowerVolume		0x1008ff11
 #define XF86AudioRaiseVolume		0x1008ff13
 #define MODKEY Mod1Mask
@@ -76,7 +77,7 @@ static const Layout layouts[] = {
 	{ MODKEY|Mod4Mask, 		KEY,      spawn,       {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+#define SHCMD(cmd) { .v = (const char*[]){ "/bin/zsh", "-c", cmd, NULL } }
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
@@ -95,6 +96,7 @@ static const char *cmd_notesmenu[] = {"notesmenu", NULL };
 static const char *cmd_soundup[]  = { "soundup", NULL };
 static const char *cmd_sounddown[]  = { "sounddown", NULL };
 static const char *cmd_soundtoggle[]  = { "amixer", "-q", "sset", "Master", "toggle", NULL };
+static const char *cmd_mictoggle[]  = { "amixer", "-q", "sset", "Capture", "toggle", NULL };
 static const char *cmd_dbar[] = { "donotdisturb", NULL };
 
 static Key keys[] = {
@@ -112,6 +114,7 @@ static Key keys[] = {
 	{ Mod4Mask,			XK_u,	   spawn,	   {.v = cmd_usbmenu} },
 	{ Mod4Mask,			XK_x,	   spawn,	   {.v = cmd_shutdown} },
 	{ 0,		XF86AudioMute,	  	   spawn,	   {.v = cmd_soundtoggle} },
+	{ 0,		XF86AudioMicMute,  	   spawn,	   {.v = cmd_mictoggle} },
 	{ 0,            XF86AudioRaiseVolume,      spawn,          {.v = cmd_soundup } },
 	{ 0,            XF86AudioLowerVolume,      spawn,          {.v = cmd_sounddown } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
@@ -167,6 +170,7 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
+	{ ClkWinTitle,          MODKEY,         Button2,        killclient,     {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = cmd_term } },
 	{ ClkStatusText,        MODKEY,         Button2,        spawn,          {.v = cmd_dbar } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
