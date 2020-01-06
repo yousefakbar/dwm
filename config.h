@@ -1,5 +1,6 @@
 /* TODO:
  * 	- music control keys, similar to volume control
+ * 	- dbar module for music playback
  */
 
 /* appearance */
