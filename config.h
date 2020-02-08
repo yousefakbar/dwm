@@ -33,7 +33,7 @@ static const char *colors[][5]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "4", "5", "6", "ﭮ", "", "9" };
+static const char *tags[] = { "", "", "", "", "פֿ", "", "ﭮ", "", "9" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -43,6 +43,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "firefox",  NULL,       NULL,       1 << 1,       0,           -1 },
+	{ "Brave-browser",  NULL,       NULL,       1 << 1,       0,           -1 },
 	{ "qutebrowser",  NULL,       NULL,   1 << 1,       0,           -1 },
 	{ "St",		"st",	 "neomutt",   1 << 2,	    0,		 -1 },
 	{ "discord", "discord",	 NULL,  1 << 6,    0,	 -1 },
@@ -83,7 +84,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *cmd_term[]  = { "st", NULL };
-static const char *cmd_browser[]  = { "qutebrowser", NULL };
+static const char *cmd_browser[]  = { "brave", NULL };
 static const char *cmd_fileman[]  = { "st", "-e", "ranger", NULL };
 static const char *cmd_mutt[]  = { "st", "-e", "neomutt", NULL };
 static const char *cmd_lock[]  = { "i3lock-fancy", "-t", "", NULL };
